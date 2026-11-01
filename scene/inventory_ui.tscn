@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://djfmtqk4veyol"]
+
+[ext_resource type="Script" uid="uid://dq6sluktfmhmb" path="res://script/inventory_ui.gd" id="1_ia0un"]
+
+[node name="InventoryUI" type="Control" unique_id=583915790]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ia0un")
+
+[node name="Panel" type="Panel" parent="." unique_id=2132402655]
+custom_minimum_size = Vector2(400, 350)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1789127541]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1194469191]
+layout_mode = 2
+text = "INVENTORY MANAGEMENT"
+
+[node name="MilkLabel" type="Label" parent="Panel/VBoxContainer" unique_id=62742834]
+layout_mode = 2
+text = "Milk: 0"
+
+[node name="BreadLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1864393099]
+layout_mode = 2
+text = "Bread: 0"
+
+[node name="JuiceLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1164698878]
+layout_mode = 2
+text = "Juice: 0"
+
+[node name="RefreshButton" type="Button" parent="Panel/VBoxContainer" unique_id=608332403]
+layout_mode = 2
+text = "Refresh Inventory"
+
+[node name="CloseButton" type="Button" parent="Panel/VBoxContainer" unique_id=498141038]
+layout_mode = 2
+text = "Close"
+
+[node name="Separator" type="HSeparator" parent="Panel/VBoxContainer" unique_id=248184175]
+layout_mode = 2

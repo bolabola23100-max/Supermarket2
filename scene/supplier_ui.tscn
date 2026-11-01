@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://fmuh7kjel0d5"]
+
+[ext_resource type="Script" uid="uid://k2846blw0k3m" path="res://script/supplier_ui.gd" id="1_d1mr5"]
+
+[node name="SupplierUI" type="Control" unique_id=1080571654]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d1mr5")
+
+[node name="Panel" type="Panel" parent="." unique_id=749607769]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1873685735]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1785068080]
+layout_mode = 2
+text = "SUPPLIER ORDERS"
+
+[node name="ProductOption" type="OptionButton" parent="Panel/VBoxContainer" unique_id=699223682]
+layout_mode = 2
+
+[node name="QuantityInput" type="SpinBox" parent="Panel/VBoxContainer" unique_id=1587079539]
+layout_mode = 2
+min_value = 1.0
+value = 10.0
+
+[node name="PriceLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1203572241]
+layout_mode = 2
+text = "Total Cost: 0"
+
+[node name="OrderButton" type="Button" parent="Panel/VBoxContainer" unique_id=663988637]
+layout_mode = 2
+text = "ORDER PRODUCTS"
+
+[node name="ResultLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1891979237]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="Panel/VBoxContainer" unique_id=2055399285]
+layout_mode = 2
+text = "CLOSE"
