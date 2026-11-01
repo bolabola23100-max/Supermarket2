@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c0bee0sex8drx"]
+
+[ext_resource type="Script" uid="uid://dd2jcda42p8e3" path="res://script/customer.gd" id="1_vqdmq"]
+[ext_resource type="Script" uid="uid://dvtytx56ytvkx" path="res://script/shopping_basket.gd" id="2_ty3hb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_d43dl"]
+radius = 0.35
+height = 1.7
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d43dl"]
+radius = 0.35
+height = 1.7
+
+[node name="Customer" type="CharacterBody3D" unique_id=1941849650]
+script = ExtResource("1_vqdmq")
+
+[node name="body" type="MeshInstance3D" parent="." unique_id=542286991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+mesh = SubResource("CapsuleMesh_d43dl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1334633673]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("CapsuleShape3D_d43dl")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=13885733]
+
+[node name="ShoppingBasket" type="Node" parent="." unique_id=652326192]
+script = ExtResource("2_ty3hb")

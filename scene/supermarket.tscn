@@ -1,0 +1,320 @@
+[gd_scene format=3 uid="uid://bxa633ajehxdv"]
+
+[ext_resource type="Script" uid="uid://4a86p4uet0hb" path="res://script/player.gd" id="1_dgimi"]
+[ext_resource type="Script" uid="uid://b6fmi7h2s8r2t" path="res://script/save_manager.gd" id="1_dpnnj"]
+[ext_resource type="Script" uid="uid://dfxu2n2sygyio" path="res://script/joystick.gd" id="2_67pd6"]
+[ext_resource type="Script" uid="uid://djo6728hr3ptm" path="res://script/interaction_manager.gd" id="3_b8v7f"]
+[ext_resource type="Texture2D" uid="uid://scearfypd1sj" path="res://Group 1 (1).png" id="3_swt3j"]
+[ext_resource type="Script" uid="uid://cxl36wxe7drmy" path="res://script/camera_touch.gd" id="3_xh1g5"]
+[ext_resource type="Script" uid="uid://ckrcm8rts3f4v" path="res://script/customer_spawner.gd" id="5_xh1g5"]
+[ext_resource type="Texture2D" uid="uid://bn31du07spxea" path="res://Polygon 1 (1).png" id="6_qqc5w"]
+[ext_resource type="Script" uid="uid://boq27maqjn7nd" path="res://script/money_manager.gd" id="6_swt3j"]
+[ext_resource type="Script" uid="uid://dpv53gnvjanh0" path="res://script/inventory_manager.gd" id="7_mrrpw"]
+[ext_resource type="Script" uid="uid://c6fv7k84s58j0" path="res://scene/interact_button.gd" id="8_bqr25"]
+[ext_resource type="Script" uid="uid://cr58hqy3huql1" path="res://script/supplier_manager.gd" id="8_cgguc"]
+[ext_resource type="Script" uid="uid://brxdvu7y45fbs" path="res://script/game_ui.gd" id="9_o3met"]
+[ext_resource type="PackedScene" uid="uid://djfmtqk4veyol" path="res://scene/inventory_ui.tscn" id="9_vh42f"]
+[ext_resource type="PackedScene" uid="uid://fmuh7kjel0d5" path="res://scene/supplier_ui.tscn" id="11_tleqb"]
+[ext_resource type="ArrayMesh" uid="uid://dqujr6tg5w6ym" path="res://shelf.obj" id="13_cie0j"]
+[ext_resource type="PackedScene" uid="uid://c6bwl2oi637nj" path="res://scene/product.tscn" id="15_rxgvc"]
+[ext_resource type="Script" uid="uid://bl6lp5le3vl1w" path="res://script/product_point.gd" id="16_bqr25"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0mk57"]
+size = Vector3(20, 5, 0.3)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ueu5m"]
+data = PackedVector3Array(-10, 2.5, 0.14999999, 10, 2.5, 0.14999999, -10, -2.5, 0.14999999, 10, 2.5, 0.14999999, 10, -2.5, 0.14999999, -10, -2.5, 0.14999999, 10, 2.5, -0.14999999, -10, 2.5, -0.14999999, 10, -2.5, -0.14999999, -10, 2.5, -0.14999999, -10, -2.5, -0.14999999, 10, -2.5, -0.14999999, 10, 2.5, 0.14999999, 10, 2.5, -0.14999999, 10, -2.5, 0.14999999, 10, 2.5, -0.14999999, 10, -2.5, -0.14999999, 10, -2.5, 0.14999999, -10, 2.5, -0.14999999, -10, 2.5, 0.14999999, -10, -2.5, -0.14999999, -10, 2.5, 0.14999999, -10, -2.5, 0.14999999, -10, -2.5, -0.14999999, 10, 2.5, 0.14999999, -10, 2.5, 0.14999999, 10, 2.5, -0.14999999, -10, 2.5, 0.14999999, -10, 2.5, -0.14999999, 10, 2.5, -0.14999999, -10, -2.5, 0.14999999, 10, -2.5, 0.14999999, -10, -2.5, -0.14999999, 10, -2.5, 0.14999999, 10, -2.5, -0.14999999, -10, -2.5, -0.14999999)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v4j6i"]
+size = Vector3(0.3, 5, 15)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_o8p5a"]
+data = PackedVector3Array(-0.14999999, 2.5, 7.5, 0.14999999, 2.5, 7.5, -0.14999999, -2.5, 7.5, 0.14999999, 2.5, 7.5, 0.14999999, -2.5, 7.5, -0.14999999, -2.5, 7.5, 0.14999999, 2.5, -7.5, -0.14999999, 2.5, -7.5, 0.14999999, -2.5, -7.5, -0.14999999, 2.5, -7.5, -0.14999999, -2.5, -7.5, 0.14999999, -2.5, -7.5, 0.14999999, 2.5, 7.5, 0.14999999, 2.5, -7.5, 0.14999999, -2.5, 7.5, 0.14999999, 2.5, -7.5, 0.14999999, -2.5, -7.5, 0.14999999, -2.5, 7.5, -0.14999999, 2.5, -7.5, -0.14999999, 2.5, 7.5, -0.14999999, -2.5, -7.5, -0.14999999, 2.5, 7.5, -0.14999999, -2.5, 7.5, -0.14999999, -2.5, -7.5, 0.14999999, 2.5, 7.5, -0.14999999, 2.5, 7.5, 0.14999999, 2.5, -7.5, -0.14999999, 2.5, 7.5, -0.14999999, 2.5, -7.5, 0.14999999, 2.5, -7.5, -0.14999999, -2.5, 7.5, 0.14999999, -2.5, 7.5, -0.14999999, -2.5, -7.5, 0.14999999, -2.5, 7.5, 0.14999999, -2.5, -7.5, -0.14999999, -2.5, -7.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ueu5m"]
+size = Vector3(0.3, 5, 15)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8ip67"]
+data = PackedVector3Array(-0.14999999, 2.5, 7.5, 0.14999999, 2.5, 7.5, -0.14999999, -2.5, 7.5, 0.14999999, 2.5, 7.5, 0.14999999, -2.5, 7.5, -0.14999999, -2.5, 7.5, 0.14999999, 2.5, -7.5, -0.14999999, 2.5, -7.5, 0.14999999, -2.5, -7.5, -0.14999999, 2.5, -7.5, -0.14999999, -2.5, -7.5, 0.14999999, -2.5, -7.5, 0.14999999, 2.5, 7.5, 0.14999999, 2.5, -7.5, 0.14999999, -2.5, 7.5, 0.14999999, 2.5, -7.5, 0.14999999, -2.5, -7.5, 0.14999999, -2.5, 7.5, -0.14999999, 2.5, -7.5, -0.14999999, 2.5, 7.5, -0.14999999, -2.5, -7.5, -0.14999999, 2.5, 7.5, -0.14999999, -2.5, 7.5, -0.14999999, -2.5, -7.5, 0.14999999, 2.5, 7.5, -0.14999999, 2.5, 7.5, 0.14999999, 2.5, -7.5, -0.14999999, 2.5, 7.5, -0.14999999, 2.5, -7.5, 0.14999999, 2.5, -7.5, -0.14999999, -2.5, 7.5, 0.14999999, -2.5, 7.5, -0.14999999, -2.5, -7.5, 0.14999999, -2.5, 7.5, 0.14999999, -2.5, -7.5, -0.14999999, -2.5, -7.5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d43dl"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ylbu4"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d43dl"]
+size = Vector3(20, 0.2, 15)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mrrpw"]
+load_path = "res://.godot/imported/Polygon 1 (1).png-4c017ec47d58013dc022fb009cb8990e.ctex"
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_d43dl"]
+vertices = PackedVector3Array(-9.5, 0.4, -7, -9.5, 0.4, 7, 9.5, 0.4, 7, 9.5, 0.4, -7)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 0
+agent_height = 1.7
+agent_radius = 0.35
+
+[sub_resource type="BoxMesh" id="BoxMesh_d43dl"]
+size = Vector3(20, 0.2, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ylbu4"]
+size = Vector3(0.8, 0.8, 0.8)
+
+[node name="Supermarket" type="Node3D" unique_id=2048395668]
+transform = Transform3D(0.9942215, 0, -0.10734929, 0, 1, 0, 0.10734929, 0, 0.9942215, 0, 0, -0.007600069)
+
+[node name="SaveManager" type="Node" parent="." unique_id=202866436]
+script = ExtResource("1_dpnnj")
+
+[node name="BackWall" type="MeshInstance3D" parent="." unique_id=2100471879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -7.5)
+mesh = SubResource("BoxMesh_0mk57")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BackWall" unique_id=1956775205]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackWall/StaticBody3D" unique_id=1681840258]
+shape = SubResource("ConcavePolygonShape3D_ueu5m")
+
+[node name="RightWall" type="MeshInstance3D" parent="." unique_id=1752593337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.5, 0)
+mesh = SubResource("BoxMesh_v4j6i")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RightWall" unique_id=93077531]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightWall/StaticBody3D" unique_id=1809923201]
+shape = SubResource("ConcavePolygonShape3D_o8p5a")
+
+[node name="LeftWall" type="MeshInstance3D" parent="." unique_id=653645547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.5, 0)
+mesh = SubResource("BoxMesh_ueu5m")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LeftWall" unique_id=1704598257]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftWall/StaticBody3D" unique_id=662644445]
+shape = SubResource("ConcavePolygonShape3D_8ip67")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=497761215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_mask = 5
+script = ExtResource("1_dgimi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=514500228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_d43dl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=850210923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_ylbu4")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1611574540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+current = true
+
+[node name="InteractionRay" type="RayCast3D" parent="Player/Camera3D" unique_id=461345365]
+target_position = Vector3(0, 0, -3)
+collision_mask = 3
+
+[node name="InteractionManager" type="Node" parent="Player" unique_id=419723709]
+script = ExtResource("3_b8v7f")
+
+[node name="floorBody" type="StaticBody3D" parent="." unique_id=1662120352]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floorBody" unique_id=788884573]
+shape = SubResource("BoxShape3D_d43dl")
+
+[node name="MainLight" type="DirectionalLight3D" parent="." unique_id=2120657886]
+transform = Transform3D(0.8660254, 0.35355338, -0.35355338, 0, 0.70710677, 0.70710677, 0.5, -0.6123724, 0.6123724, 0, 0, 0)
+
+[node name="MobileControls" type="CanvasLayer" parent="." unique_id=1206703451]
+
+[node name="Joystick" type="Control" parent="MobileControls" unique_id=142591255]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -220.0
+offset_right = 220.0
+offset_bottom = -40.0
+grow_vertical = 0
+script = ExtResource("2_67pd6")
+
+[node name="JoystickBase" type="TextureRect" parent="MobileControls/Joystick" unique_id=1394625987]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -181.0
+offset_right = 182.0
+grow_vertical = 0
+texture = ExtResource("3_swt3j")
+
+[node name="JoystickKnob" type="TextureRect" parent="MobileControls/Joystick/JoystickBase" unique_id=316947748]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_mrrpw")
+
+[node name="CameraTouch" type="Control" parent="MobileControls" unique_id=118206485]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_xh1g5")
+
+[node name="InteractButton" type="Button" parent="MobileControls" unique_id=130623288]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+icon = ExtResource("6_qqc5w")
+script = ExtResource("8_bqr25")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=2014249422]
+navigation_mesh = SubResource("NavigationMesh_d43dl")
+
+[node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=2059244565]
+mesh = SubResource("BoxMesh_d43dl")
+
+[node name="CustomerSpawnPoint" type="Marker3D" parent="." unique_id=2005310669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5759359, 0, 5.3340626)
+
+[node name="CustomerTarget1" type="Marker3D" parent="." unique_id=648231968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="CustomerTarget2" type="Marker3D" parent="." unique_id=77186673]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 2)
+
+[node name="CheckoutPoint" type="Marker3D" parent="." unique_id=2087998329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="CustomerSpawner" type="Node3D" parent="." unique_id=1211631147]
+script = ExtResource("5_xh1g5")
+
+[node name="ShelfPoint1" type="Marker3D" parent="." unique_id=1268254203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
+
+[node name="MoneyManager" type="Node" parent="." unique_id=1638831322]
+script = ExtResource("6_swt3j")
+
+[node name="InventoryManager" type="Node" parent="." unique_id=1369616378]
+script = ExtResource("7_mrrpw")
+
+[node name="SupplierManager" type="Node" parent="." unique_id=1996360979]
+script = ExtResource("8_cgguc")
+
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=1745928062]
+script = ExtResource("9_o3met")
+
+[node name="InventoryUI" parent="GameUI" unique_id=583915790 instance=ExtResource("9_vh42f")]
+
+[node name="InventoryOpenButton" type="Button" parent="GameUI" unique_id=1474193537]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "INVENTORY
+"
+
+[node name="SupplierUI" parent="GameUI" unique_id=1080571654 instance=ExtResource("11_tleqb")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="SupplierOpenButton" type="Button" parent="GameUI" unique_id=1052715273]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -82.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "SUPPLIER"
+
+[node name="StatsPanel" type="Panel" parent="GameUI" unique_id=970528492]
+offset_top = 31.0
+offset_right = 40.0
+offset_bottom = 71.0
+size_flags_horizontal = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/StatsPanel" unique_id=394981465]
+layout_mode = 1
+offset_top = 50.0
+offset_right = 58.0
+offset_bottom = 208.0
+
+[node name="TitleLabel" type="Label" parent="GameUI/StatsPanel/VBoxContainer" unique_id=1998106902]
+layout_mode = 2
+text = "............."
+
+[node name="BalanceLabel" type="Label" parent="GameUI/StatsPanel/VBoxContainer" unique_id=1449684393]
+layout_mode = 2
+
+[node name="RevenueLabel" type="Label" parent="GameUI/StatsPanel/VBoxContainer" unique_id=1597176931]
+layout_mode = 2
+
+[node name="ExpensesLabel" type="Label" parent="GameUI/StatsPanel/VBoxContainer" unique_id=359411059]
+layout_mode = 2
+
+[node name="ProfitLabel" type="Label" parent="GameUI/StatsPanel/VBoxContainer" unique_id=1790760690]
+layout_mode = 2
+
+[node name="SalesLabel" type="Label" parent="GameUI/StatsPanel/VBoxContainer" unique_id=599134507]
+layout_mode = 2
+
+[node name="Crosshair" type="CenterContainer" parent="GameUI" unique_id=702076772]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GameUI/Crosshair" unique_id=130662356]
+layout_mode = 2
+text = "."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shelf2" type="MeshInstance3D" parent="." unique_id=14974621]
+transform = Transform3D(0.26529154, 0, -1.3593547, 0, 1.385, 0, 1.3593547, 0, 0.26529154, -3.715, 0.82255375, 0.48700002)
+mesh = ExtResource("13_cie0j")
+
+[node name="ProductPoint" type="Area3D" parent="Shelf2" unique_id=1123485477]
+transform = Transform3D(0.96745425, 0, -4.4703484e-08, 0, 1.07, 0, 2.2351742e-08, 0, 2.2709477, 0.304636, 0, 0.026011705)
+collision_layer = 2
+script = ExtResource("16_bqr25")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shelf2/ProductPoint" unique_id=1088109179]
+transform = Transform3D(1, 0, -9.313227e-09, 0, 1, 0, 9.313227e-09, 0, 1, 0.3700524, 0.96223915, 0.043030977)
+shape = SubResource("BoxShape3D_ylbu4")
+
+[node name="Product" parent="." unique_id=972456908 instance=ExtResource("15_rxgvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.204, 1.4522007, -1.888)
