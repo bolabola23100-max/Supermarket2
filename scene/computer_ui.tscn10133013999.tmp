@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://c74kpw5bgrvy7"]
+
+[ext_resource type="Script" uid="uid://b3xjcfw3kj05c" path="res://script/computer_ui.gd" id="1_vm5bs"]
+[ext_resource type="PackedScene" uid="uid://fmuh7kjel0d5" path="res://scene/supplier_ui.tscn" id="2_2opeb"]
+[ext_resource type="Texture2D" uid="uid://bb6qi7clmm8sg" path="res://assets/Untitled Design.png" id="2_8qc12"]
+
+[node name="ComputerUI" type="Control" unique_id=796188224]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vm5bs")
+
+[node name="Background" type="ColorRect" parent="." unique_id=437260375]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19434929, 0.19434926, 0.19434926, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=1367848627]
+position = Vector2(575.49994, 327)
+scale = Vector2(0.46882686, 0.5011601)
+texture = ExtResource("2_8qc12")
+
+[node name="Title" type="Label" parent="Background/Sprite2D" unique_id=1213218388]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1384.3062
+offset_top = -608.58795
+offset_right = -1090.3062
+offset_bottom = -569.58795
+grow_horizontal = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
+text = "STORE MANAGEMENT"
+
+[node name="OrderButton" type="Button" parent="Background/Sprite2D" unique_id=186704655]
+offset_left = -1174.2074
+offset_top = -596.6157
+offset_right = -1001.4357
+offset_bottom = -436.98608
+theme_override_font_sizes/font_size = 20
+flat = true
+
+[node name="StockButton" type="Button" parent="Background/Sprite2D" unique_id=308363878]
+offset_left = -1165.6754
+offset_top = -349.18982
+offset_right = -1003.56866
+offset_bottom = -193.55093
+theme_override_font_sizes/font_size = 20
+flat = true
+
+[node name="Status" type="Label" parent="Background/Sprite2D" unique_id=1873261198]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1409.902
+offset_top = -790.1666
+offset_right = -1021.902
+offset_bottom = -721.1666
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "SYSTEM ONLINE"
+
+[node name="OrderPage" type="PanelContainer" parent="." unique_id=1324356786]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OrderPage" unique_id=1098871082]
+layout_mode = 2
+
+[node name="OrderTitle" type="Label" parent="OrderPage/VBoxContainer" unique_id=330920657]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "المنتجات"
+
+[node name="OrderContent" type="Label" parent="OrderPage/VBoxContainer" unique_id=397554443]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "قائمة المنتجات."
+
+[node name="SupplierContainer" type="SubViewportContainer" parent="OrderPage/VBoxContainer" unique_id=365810523]
+custom_minimum_size = Vector2(0, 432.62)
+layout_mode = 2
+stretch = true
+
+[node name="SupplierViewport" type="SubViewport" parent="OrderPage/VBoxContainer/SupplierContainer" unique_id=451923649]
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(1152, 433)
+render_target_update_mode = 4
+
+[node name="SupplierUI" parent="OrderPage/VBoxContainer/SupplierContainer/SupplierViewport" unique_id=1080571654 instance=ExtResource("2_2opeb")]
+
+[node name="StockPage" type="PanelContainer" parent="." unique_id=437216293]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 22.0
+offset_right = -31.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StockPage" unique_id=1433681426]
+layout_mode = 2
+
+[node name="StockTitle" type="Label" parent="StockPage/VBoxContainer" unique_id=678581405]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "التسعير والمخزون"
+
+[node name="StockContent" type="Label" parent="StockPage/VBoxContainer" unique_id=122997264]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "المنتجات والمخزون"
+
+[node name="ProductOption" type="OptionButton" parent="StockPage/VBoxContainer" unique_id=914093009]
+layout_mode = 2
+
+[node name="CurrentPriceLabel" type="Label" parent="StockPage/VBoxContainer" unique_id=1497654867]
+layout_mode = 2
+
+[node name="MarketPriceLabel" type="Label" parent="StockPage/VBoxContainer" unique_id=169419606]
+layout_mode = 2
+
+[node name="StockAmountLabel" type="Label" parent="StockPage/VBoxContainer" unique_id=54965983]
+layout_mode = 2
+
+[node name="NewPriceInput" type="SpinBox" parent="StockPage/VBoxContainer" unique_id=784541476]
+layout_mode = 2
+value = 1.0
+
+[node name="UpdatePriceButton" type="Button" parent="StockPage/VBoxContainer" unique_id=816529113]
+layout_mode = 2
+text = "تحديث السعر"
+
+[node name="StockBackButton" type="Button" parent="StockPage/VBoxContainer" unique_id=1206520535]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "رجوع"

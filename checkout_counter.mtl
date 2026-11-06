@@ -1,0 +1,34 @@
+# Material Library for checkout_counter.obj
+# Stylized flat low-poly materials
+
+newmtl DarkGray_Countertop
+Ka 0.22 0.24 0.27
+Kd 0.22 0.24 0.27
+Ks 0.05 0.05 0.05
+Ns 10.0
+d 1.0
+illum 1
+
+newmtl White_CabinetBody
+Ka 0.92 0.93 0.95
+Kd 0.92 0.93 0.95
+Ks 0.08 0.08 0.08
+Ns 10.0
+d 1.0
+illum 1
+
+newmtl LightGray_Drawer
+Ka 0.78 0.80 0.83
+Kd 0.78 0.80 0.83
+Ks 0.05 0.05 0.05
+Ns 10.0
+d 1.0
+illum 1
+
+newmtl Blue_Accent
+Ka 0.12 0.53 0.90
+Kd 0.12 0.53 0.90
+Ks 0.10 0.10 0.10
+Ns 15.0
+d 1.0
+illum 1

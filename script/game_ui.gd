@@ -3,8 +3,6 @@ extends CanvasLayer
 @onready var inventory_ui = $InventoryUI
 @onready var supplier_ui = $SupplierUI
 
-@onready var inventory_button = $InventoryOpenButton
-@onready var supplier_button = $SupplierOpenButton
 
 # إحصائيات المتجر
 @onready var balance_label = $StatsPanel/VBoxContainer/BalanceLabel
@@ -16,13 +14,12 @@ extends CanvasLayer
 var money_manager
 
 
+
+
 func _ready():
+	set_ltr(self)
 
 	money_manager = get_node("/root/Supermarket/MoneyManager")
-
-	# أزرار الواجهات
-	inventory_button.pressed.connect(open_inventory)
-	supplier_button.pressed.connect(open_supplier)
 
 	# استقبال إشعارات تغيير الأموال
 	money_manager.stats_changed.connect(update_stats)
@@ -44,6 +41,12 @@ func update_stats():
 
 	sales_label.text = "Sales: " + str(money_manager.get_total_sales())
 
+func set_ltr(node: Node):
+	if node is Control:
+		node.layout_direction = Control.LAYOUT_DIRECTION_LTR
+
+	for child in node.get_children():
+		set_ltr(child)
 
 # فتح المخزون
 func open_inventory():

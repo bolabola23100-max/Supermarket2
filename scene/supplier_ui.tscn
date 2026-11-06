@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://fmuh7kjel0d5"]
 
 [ext_resource type="Script" uid="uid://k2846blw0k3m" path="res://script/supplier_ui.gd" id="1_d1mr5"]
+[ext_resource type="Texture2D" uid="uid://ykcf4gm67kmo" path="res://assets/market_background.png" id="2_merf0"]
+[ext_resource type="PackedScene" uid="uid://txo5ql0rmy7a" path="res://scene/product_card.tscn" id="2_otdkl"]
 
 [node name="SupplierUI" type="Control" unique_id=1080571654]
 layout_mode = 3
@@ -10,53 +12,88 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d1mr5")
+product_card_scene = ExtResource("2_otdkl")
+metadata/_edit_horizontal_guides_ = [-11.0]
 
-[node name="Panel" type="Panel" parent="." unique_id=749607769]
-custom_minimum_size = Vector2(400, 400)
+[node name="Background" type="TextureRect" parent="." unique_id=1235361343]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -577.0
+offset_top = -327.0
+offset_right = 585.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_merf0")
+expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1873685735]
+[node name="Header" type="PanelContainer" parent="." unique_id=1415067112]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Header" unique_id=130922610]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Header/HBoxContainer" unique_id=1599751002]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 28
+text = "MARKET"
+
+[node name="CloseButton" type="Button" parent="Header/HBoxContainer" unique_id=464969670]
+custom_minimum_size = Vector2(50, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "✕"
+
+[node name="ProductsScroll" type="ScrollContainer" parent="." unique_id=1282519819]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 0
 
-[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1785068080]
+[node name="ProductsGrid" type="GridContainer" parent="ProductsScroll" unique_id=1723917391]
 layout_mode = 2
-text = "SUPPLIER ORDERS"
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
 
-[node name="ProductOption" type="OptionButton" parent="Panel/VBoxContainer" unique_id=699223682]
-layout_mode = 2
+[node name="Footer" type="PanelContainer" parent="." unique_id=1243075304]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="QuantityInput" type="SpinBox" parent="Panel/VBoxContainer" unique_id=1587079539]
-layout_mode = 2
-min_value = 1.0
-value = 10.0
-
-[node name="PriceLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1203572241]
-layout_mode = 2
-text = "Total Cost: 0"
-
-[node name="OrderButton" type="Button" parent="Panel/VBoxContainer" unique_id=663988637]
-layout_mode = 2
-text = "ORDER PRODUCTS"
-
-[node name="ResultLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1891979237]
+[node name="HBoxContainer" type="HBoxContainer" parent="Footer" unique_id=1617253898]
 layout_mode = 2
 
-[node name="CloseButton" type="Button" parent="Panel/VBoxContainer" unique_id=2055399285]
+[node name="CartCountLabel" type="Label" parent="Footer/HBoxContainer" unique_id=774075472]
 layout_mode = 2
-text = "CLOSE"
+size_flags_horizontal = 3
+text = "Cart: 0 Items"
+
+[node name="TotalLabel" type="Label" parent="Footer/HBoxContainer" unique_id=694193444]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Total: 0.00"
+
+[node name="PlaceOrderButton" type="Button" parent="Footer/HBoxContainer" unique_id=303078994]
+custom_minimum_size = Vector2(160, 45)
+layout_mode = 2
+text = "PLACE ORDER"

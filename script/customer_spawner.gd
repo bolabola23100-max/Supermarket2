@@ -1,32 +1,46 @@
-extends Node3D
+extends Node
 
-@export var spawn_interval: float = 8.0
-@export var max_customers: int = 5
+@export var customer_scene: PackedScene     # اسحب customer.tscn هنا
+@export var interval_min: float = 15.0
+@export var interval_max: float = 30.0
+@export var max_customers: int = 3
+@export var is_open: bool = true            # المتجر مفتوح؟
 
-var spawn_timer: float = 0.0
+var _alive: int = 0
 
-var customer_scene = preload("res://scene/customer.tscn")
 
 func _ready():
-	spawn_customer()
+	_loop()
 
 
-func _process(delta):
-	var customers = get_tree().get_nodes_in_group("customers")
+func _loop() -> void:
+	while is_inside_tree():
+		await get_tree().create_timer(randf_range(interval_min, interval_max)).timeout
+		if not is_inside_tree():
+			return
+		if not is_open or _alive >= max_customers:
+			continue
+		if not _shelves_have_products():
+			continue
+		_spawn()
 
-	if customers.size() >= max_customers:
+
+func _shelves_have_products() -> bool:
+	for z in get_tree().get_nodes_in_group("product_points"):
+		if "products" in z and not z.products.is_empty():
+			return true
+	return false
+
+
+func _spawn() -> void:
+	if customer_scene == null:
+		print("CUSTOMER SCENE NOT SET")
 		return
-
-	spawn_timer += delta
-
-	if spawn_timer >= spawn_interval:
-		spawn_timer = 0.0
-		spawn_customer()
+	var c = customer_scene.instantiate()
+	get_tree().current_scene.add_child(c)
+	_alive += 1
+	c.tree_exited.connect(_on_customer_gone)
 
 
-func spawn_customer():
-	var customer = customer_scene.instantiate()
-
-	customer.add_to_group("customers")
-
-	get_parent().add_child.call_deferred(customer)
+func _on_customer_gone() -> void:
+	_alive = maxi(0, _alive - 1)

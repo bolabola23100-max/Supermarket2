@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c25vw8ti2712k"]
+
+[ext_resource type="Script" uid="uid://b5fc8arwkkwsy" path="res://script/product.gd" id="1_gehrx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c8x7e"]
+radius = 2.5708008
+height = 7.290161
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5w1nh"]
+radius = 0.44091797
+height = 1.1975098
+
+[node name="Product" type="RigidBody3D" unique_id=1719541373]
+collision_mask = 5
+continuous_cd = true
+script = ExtResource("1_gehrx")
+product_name = "bread"
+price = 4.5
+shelf_rotation = Vector3(0, 90, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=639599377]
+transform = Transform3D(0.039086975, 0, 0, 0, 0.039086975, 0, 0, 0, 0.039086975, 0.08966908, 0.0056313337, -0.01221323)
+mesh = SubResource("CapsuleMesh_c8x7e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=158907355]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0.087558925, 0.006014403, -0.012147539)
+shape = SubResource("CapsuleShape3D_5w1nh")

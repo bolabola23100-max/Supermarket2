@@ -1,4 +1,3 @@
-
 extends Control
 
 @onready var base = $JoystickBase
@@ -16,9 +15,17 @@ func _ready():
 	knob.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	reset_joystick()
 
+
 func _gui_input(event):
 
-	# لمس الشاشة
+	# منع الجويستيك أثناء استخدام الكمبيوتر
+	var player = get_tree().get_first_node_in_group("player")
+
+	if player != null and player.in_computer_mode:
+		reset_joystick()
+		accept_event()
+		return
+
 	if event is InputEventScreenTouch:
 		if event.pressed and not is_pressed:
 			is_pressed = true
@@ -28,12 +35,10 @@ func _gui_input(event):
 		elif not event.pressed and event.index == touch_index:
 			reset_joystick()
 
-	# سحب الإصبع
 	elif event is InputEventScreenDrag:
 		if is_pressed and event.index == touch_index:
 			update_joystick(event.position)
 
-	# ضغط الماوس للاختبار
 	elif event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -42,7 +47,6 @@ func _gui_input(event):
 			else:
 				reset_joystick()
 
-	# تحريك الماوس
 	elif event is InputEventMouseMotion and is_pressed:
 		update_joystick(event.position)
 

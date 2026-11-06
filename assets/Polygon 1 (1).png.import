@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://scearfypd1sj"
-path="res://.godot/imported/Group 1 (1).png-949d625cd1939f945a1e6cf83b4eec0f.ctex"
+uid="uid://bn31du07spxea"
+path="res://.godot/imported/Polygon 1 (1).png-a17b5f16fac9a729876bdff656396817.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Group 1 (1).png"
-dest_files=["res://.godot/imported/Group 1 (1).png-949d625cd1939f945a1e6cf83b4eec0f.ctex"]
+source_file="res://assets/Polygon 1 (1).png"
+dest_files=["res://.godot/imported/Polygon 1 (1).png-a17b5f16fac9a729876bdff656396817.ctex"]
 
 [params]
 

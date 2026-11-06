@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c6bwl2oi637nj"]
+
+[ext_resource type="Script" uid="uid://b5fc8arwkkwsy" path="res://script/product.gd" id="1_u1wqf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_il273"]
+size = Vector3(6.6555176, 8.840942, 1.8830014)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ylbu4"]
+size = Vector3(0.9909363, 1.2781982, 0.31573486)
+
+[node name="Product" type="RigidBody3D" unique_id=1719541373]
+collision_mask = 5
+continuous_cd = true
+script = ExtResource("1_u1wqf")
+product_name = "Milk"
+shelf_rotation = Vector3(0, 90, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=639599377]
+transform = Transform3D(0.039086975, 0, 0, 0, 0.039086975, 0, 0, 0, 0.039086975, 0.08966908, -0.005855713, -0.01221323)
+mesh = SubResource("BoxMesh_il273")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=158907355]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0.087558925, -0.004554443, -0.012147539)
+shape = SubResource("BoxShape3D_ylbu4")

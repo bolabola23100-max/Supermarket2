@@ -1,62 +1,121 @@
 extends Control
 
-@onready var product_option = $Panel/VBoxContainer/ProductOption
-@onready var quantity_input = $Panel/VBoxContainer/QuantityInput
+signal supplier_closed
 
-@onready var price_label = $Panel/VBoxContainer/PriceLabel
-@onready var order_button = $Panel/VBoxContainer/OrderButton
-@onready var result_label = $Panel/VBoxContainer/ResultLabel
-@onready var close_button = $Panel/VBoxContainer/CloseButton
+@export var product_card_scene: PackedScene
 
-var supplier_manager
+@onready var products_grid: GridContainer = $ProductsScroll/ProductsGrid
+@onready var close_button: Button = $Header/HBoxContainer/CloseButton
 
-var product_prices = {
-	"Milk": 15.0,
-	"Bread": 7.0,
-	"Juice": 10.0
-}
+@onready var cart_count_label: Label = $Footer/HBoxContainer/CartCountLabel
+@onready var total_label: Label = $Footer/HBoxContainer/TotalLabel
+@onready var place_order_button: Button = $Footer/HBoxContainer/PlaceOrderButton
+
+var supplier_manager: Node
+var cart: Dictionary = {}
 
 
 func _ready():
 	supplier_manager = get_node("/root/Supermarket/SupplierManager")
 
-	product_option.add_item("Milk")
-	product_option.add_item("Bread")
-	product_option.add_item("Juice")
-
-	product_option.item_selected.connect(update_price)
-	quantity_input.value_changed.connect(update_price)
-
-	order_button.pressed.connect(make_order)
 	close_button.pressed.connect(close_supplier)
+	place_order_button.pressed.connect(place_order)
 
-	update_price()
+	load_products()
+	update_cart()
 	hide()
 
 
-func update_price(_value = 0):
-	var product = product_option.get_item_text(product_option.selected)
-	var quantity = int(quantity_input.value)
+# =========================
+# LOAD PRODUCTS
+# =========================
 
-	var total = product_prices[product] * quantity
+func load_products():
+	for child in products_grid.get_children():
+		child.queue_free()
 
-	price_label.text = "Total Cost: " + str(total)
-
-
-func make_order():
-	var product = product_option.get_item_text(product_option.selected)
-	var quantity = int(quantity_input.value)
-
-	var total = product_prices[product] * quantity
-
-	if not supplier_manager.money_manager.spend_money(total):
-		result_label.text = "Not enough money!"
+	if product_card_scene == null:
+		push_error("Product Card Scene is not assigned!")
 		return
 
-	supplier_manager.order_product_without_payment(product, quantity)
+	for product_name in ProductDB.names():
+		var card = product_card_scene.instantiate()
+		products_grid.add_child(card)
 
-	result_label.text = "Order placed successfully!"
+		var stock: Dictionary = ProductDB.count_in_store(product_name)
+		var pack_size: int = ProductDB.get_pack_size(product_name)
+		var pack_price: float = ProductDB.get_pack_cost(product_name)
 
+		card.setup(
+			product_name,
+			stock,
+			pack_size,
+			pack_price
+		)
+
+		card.add_to_cart.connect(_on_add_to_cart)
+
+
+# =========================
+# CART
+# =========================
+
+func _on_add_to_cart(product_name: String, packs: int):
+	cart[product_name] = int(cart.get(product_name, 0)) + packs
+	update_cart()
+
+
+func update_cart():
+	var total_items := 0
+	var total_cost := 0.0
+
+	for product_name in cart:
+		var packs: int = int(cart[product_name])
+
+		total_items += packs
+		total_cost += ProductDB.get_pack_cost(product_name) * packs
+
+	cart_count_label.text = "Cart: %d Cartons" % total_items
+	total_label.text = "Total: %.2f" % total_cost
+
+	place_order_button.disabled = cart.is_empty()
+
+
+# =========================
+# PLACE ORDER
+# =========================
+
+func place_order():
+	if cart.is_empty():
+		return
+
+	var messages: Array[String] = []
+
+	for product_name in cart.keys():
+		var packs: int = int(cart[product_name])
+
+		var result: String = supplier_manager.place_order(
+			product_name,
+			packs
+		)
+
+		messages.append(product_name + ": " + result)
+
+	print("\n".join(messages))
+
+	cart.clear()
+	update_cart()
+
+
+# =========================
+# CLOSE SUPPLIER
+# =========================
 
 func close_supplier():
+	print("========== X PRESSED ==========")
+	print("Supplier UI: ", visible)
+
+	supplier_closed.emit()
+
+	print("CLOSE SIGNAL SENT")
 	hide()

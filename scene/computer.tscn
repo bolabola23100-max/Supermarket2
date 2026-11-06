@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://c0bee0sex8drx"]
+
+[ext_resource type="PackedScene" uid="uid://bseb8rh3q8pgm" path="res://assets/computer.glb" id="1_vqdmq"]
+[ext_resource type="PackedScene" uid="uid://c74kpw5bgrvy7" path="res://scene/computer_ui.tscn" id="2_q4rav"]
+[ext_resource type="Script" uid="uid://badwvbe518c7" path="res://script/computer.gd" id="2_tdtlj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwm60"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mu5nu"]
+albedo_color = Color(0.011087579, 0.011087578, 0.01108758, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d43dl"]
+size = Vector3(1, 0.2692871, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ylbu4"]
+size = Vector3(1, 5.6276855, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d43dl"]
+lightmap_size_hint = Vector2i(17, 19)
+top_radius = 0.12207031
+bottom_radius = 0.12207031
+height = 5.2558594
+
+[sub_resource type="QuadMesh" id="QuadMesh_vm5bs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d43dl"]
+size = Vector3(1.9901123, 3.3177643, 3.917633)
+
+[node name="computer" unique_id=850061350 instance=ExtResource("1_vqdmq")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+script = ExtResource("2_tdtlj")
+
+[node name="Cube" parent="." index="0" unique_id=1150235601]
+transform = Transform3D(0.14071952, 0, 0, 0, 1.151383, 0, 0, 0, 1.9539245, -0.31164324, 2.3396795, 0)
+material_override = SubResource("StandardMaterial3D_wwm60")
+
+[node name="Cube_001" parent="." index="1" unique_id=354985143]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.13589549, 0, 0, 0, 0.9999998, 0.17732827, 0.33203024, 0)
+material_override = SubResource("StandardMaterial3D_mu5nu")
+
+[node name="table" type="Node3D" parent="." index="2" unique_id=1740579828]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="table" index="0" unique_id=306374412]
+transform = Transform3D(3.8438396, 0, 0, 0, 0.99999976, 0, 0, 0, 5.650386, 0, 0.10778806, 0)
+mesh = SubResource("BoxMesh_d43dl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table/MeshInstance3D" index="0" unique_id=1146047668]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999976, 0, -2.569458, 0)
+shape = SubResource("BoxShape3D_ylbu4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="table" index="1" unique_id=91766153]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -1.5600091, -2.6495984, 2.5319674)
+mesh = SubResource("CylinderMesh_d43dl")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="table" index="2" unique_id=1079557209]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 1.6703107, -2.6495984, 2.5319674)
+mesh = SubResource("CylinderMesh_d43dl")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="table" index="3" unique_id=2077819933]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -1.5600091, -2.6495984, -2.4947264)
+mesh = SubResource("CylinderMesh_d43dl")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="table" index="4" unique_id=248411150]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 1.6703107, -2.6495984, -2.4947264)
+mesh = SubResource("CylinderMesh_d43dl")
+
+[node name="ComputerViewport" type="SubViewport" parent="." index="3" unique_id=893064950]
+disable_3d = true
+size = Vector2i(1024, 640)
+render_target_update_mode = 4
+
+[node name="ComputerUI" parent="ComputerViewport" index="0" unique_id=796188224 instance=ExtResource("2_q4rav")]
+
+[node name="Screen" type="MeshInstance3D" parent="." index="4" unique_id=502735917]
+transform = Transform3D(-1.5298993e-07, 0, -1.0000001, 0, 1.9000001, 0, 3.5000012, 0, -4.3711395e-08, -0.52916974, 2.3284574, -0.015599825)
+mesh = SubResource("QuadMesh_vm5bs")
+
+[node name="ComputerBody" type="StaticBody3D" parent="." index="5" unique_id=1974323386 groups=["computer"]]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ComputerBody" index="0" unique_id=435037828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1828003, 1.8099899, 0.01600648)
+shape = SubResource("BoxShape3D_d43dl")
+
+[node name="ComputerCameraPoint" type="Marker3D" parent="." index="6" unique_id=385758571]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.0491078, 2.1509209, 0)
+gizmo_extents = 2.88

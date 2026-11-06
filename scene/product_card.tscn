@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://txo5ql0rmy7a"]
+
+[ext_resource type="Script" uid="uid://cbi8mjck3sbwt" path="res://script/product_card.gd" id="1_k62cl"]
+
+[node name="ProductCard" type="Control" unique_id=1236626344]
+custom_minimum_size = Vector2(220, 300)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k62cl")
+
+[node name="CardBackground" type="PanelContainer" parent="." unique_id=1130630244]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Content" type="VBoxContainer" parent="CardBackground" unique_id=674861198]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ProductImage" type="TextureRect" parent="CardBackground/Content" unique_id=1007832042]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ProductName" type="Label" parent="CardBackground/Content" unique_id=1611138934]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Milk"
+horizontal_alignment = 1
+
+[node name="StockLabel" type="Label" parent="CardBackground/Content" unique_id=851693898]
+layout_mode = 2
+text = "In Stock: 24"
+horizontal_alignment = 1
+
+[node name="PackSizeLabel" type="Label" parent="CardBackground/Content" unique_id=429147253]
+layout_mode = 2
+text = "Pack Size: 12 pcs"
+horizontal_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="CardBackground/Content" unique_id=600198911]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Price: $120"
+horizontal_alignment = 1
+
+[node name="QuantityRow" type="HBoxContainer" parent="CardBackground/Content" unique_id=1609256970]
+layout_mode = 2
+
+[node name="MinusButton" type="Button" parent="CardBackground/Content/QuantityRow" unique_id=1075039876]
+layout_mode = 2
+text = "-"
+
+[node name="QuantityLabel" type="Label" parent="CardBackground/Content/QuantityRow" unique_id=897931697]
+layout_mode = 2
+text = "1"
+
+[node name="PlusButton" type="Button" parent="CardBackground/Content/QuantityRow" unique_id=1084366026]
+layout_mode = 2
+text = "+"
+
+[node name="AddToCartButton" type="Button" parent="CardBackground/Content" unique_id=347715429]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+text = "ADD TO CART"
